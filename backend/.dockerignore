@@ -1,0 +1,21 @@
+# Ignore node modules
+node_modules
+
+# Ignore a local .env file that should not be included in the Docker image
+.env
+
+# Ignore git and version control
+.git
+.gitignore
+
+# Ignore Docker files
+Dockerfile
+.dockerignore
+
+# Ignore npm logs
+npm-debug.log
+npm-error.log
+
+# Ignore other unnecessary files
+*.md
+LICENSE
