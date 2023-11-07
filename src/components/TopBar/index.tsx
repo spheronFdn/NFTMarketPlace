@@ -8,11 +8,12 @@ const TopBar = () => {
     <div className="fixed top-0 w-full bg-gradient-to-r from-sky-100 to-indigo-500 mb-10">
       <div className="relative flex w-full items-center px-4  py-4 shadow">
         <Image
-          src="https://bafybeidgr723rgzzss5km42asahuftdvtxvre2ebhiz2ecr2cjyhfrddi4.ipfs.sphn.link/spheronArtboard1-100-removebg-preview.png"
-          width={200}
-          height={50}
+          src="/spheronArtboard1new.png"
+          width={180}
+          height={70}
           alt="Spheron Logo"
         />
+        <h1>` | `</h1>
         <Link href="/">
           <a className="text-lg font-bold">NFTMarketplace</a>
         </Link>
