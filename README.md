@@ -15,77 +15,81 @@ We developed this NFT marketplace to provide a hands-on example for anyone inter
 To set up and run this project locally, follow these steps:
 
 1. Clone the repository:
-    ```
-    git clone https://github.com/spheronFdn/spheron-site-deployer-service.git
-    ```
+   ```
+   git clone https://github.com/spheronFdn/spheron-site-deployer-service.git
+   ```
 2. Navigate to the project directory and install dependencies:
-    ```
-    cd spheron-site-deployer-service
-    npm install
-    ```
+   ```
+   cd spheron-site-deployer-service
+   npm install
+   ```
 3. Create a `.env` file using the `.env-example` as a template and fill in the required environment variables:
-    ```
-    NEXT_PUBLIC_NFT_MARKET_ADDRESS=<deployed_contract_address>
-    NEXT_PUBLIC_GRAPH_URL=<your_subgraph_api>
-    ```
+   ```
+   NEXT_PUBLIC_NFT_MARKET_ADDRESS=<deployed_contract_address>
+   NEXT_PUBLIC_GRAPH_URL=<your_subgraph_api>
+   ```
 4. Sign up for a Spheron account [here](https://app.spheron.network/).
 5. Obtain your Spheron Storage access token following the instructions [here](https://docs.spheron.network/rest-api/#creating-an-access-token).
 6. In the `backend` directory, edit the `.env` file to include your Spheron Storage access token:
-    ```
-    SPHERON_TOKEN="<your_access_token>"
-    ```
+   ```
+   SPHERON_TOKEN="<your_access_token>"
+   ```
 7. Set up a `Dockerfile` as per your project's requirements.
-```
-# Use the official Node.js 16 image as a parent image
-FROM node:16
 
-# Set the working directory inside the container to /app
-WORKDIR /app
+   ```
+   # Use the official Node.js 16 image as a parent image
+   FROM node:16
 
-# Copy the package.json and package-lock.json files into the working directory
-COPY package*.json ./
+   # Set the working directory inside the container to /app
+   WORKDIR /app
 
-# Install dependencies in the container
-RUN npm install 
+   # Copy the package.json and package-lock.json files into the working directory
+   COPY package*.json ./
 
-# Copy the rest of your app's source code from your host to your image filesystem.
-COPY . .
+   # Install dependencies in the container
+   RUN npm install
 
-# Inform Docker that the container listens on the specified network port at runtime.
-EXPOSE 8080
+   # Copy the rest of your app's source code from your host to your image filesystem.
+   COPY . .
 
-# Define the command to run your app using CMD which defines your runtime
-CMD ["node", "index.js"]
+   # Inform Docker that the container listens on the specified network port at runtime.
+   EXPOSE 8080
 
-```
+   # Define the command to run your app using CMD which defines your runtime
+   CMD ["node", "index.js"]
+
+   ```
+
 8. Create a `.dockerignore` file to specify which files and directories should be ignored when building the Docker image.
-```
-# Ignore node modules
-node_modules
 
-# Ignore a local .env file that should not be included in the Docker image
-.env
+   ```
+   # Ignore node modules
+   node_modules
 
-# Ignore git and version control
-.git
-.gitignore
+   # Ignore a local .env file that should not be included in the Docker image
+   .env
 
-# Ignore Docker files
-Dockerfile
-.dockerignore
-```
+   # Ignore git and version control
+   .git
+   .gitignore
+
+   # Ignore Docker files
+   Dockerfile
+   .dockerignore
+   ```
+
 9. Follow the Spheron Compute documentation to build and push your Docker image, and learn about creating a Docker image [here](https://docs.spheron.network/compute/cluster/).
 10. Use the `/initiate-upload` endpoint in your frontend to obtain an upload token for the browser SDK. Detailed instructions can be found [here](https://docs.spheron.network/sdk/browser/).
 
 11. Next steps involve deploying your subgraph and starting up your project:
-```
-yarn global add @graphprotocol/graph-cli
-graph init --studio nft-marketplace-1
-graph auth --studio <your_studio_access_token>
-cd nft-marketplace-1
-graph codegen && graph build
-graph deploy --studio nft-marketplace-1
-```
+    ```
+    yarn global add @graphprotocol/graph-cli
+    graph init --studio nft-marketplace-1
+    graph auth --studio <your_studio_access_token>
+    cd nft-marketplace-1
+    graph codegen && graph build
+    graph deploy --studio nft-marketplace-1
+    ```
 
 Now, your subgraph is deployed, and you can start your project using `yarn dev` or host it on the decentralized web using Spheron Site.
 
@@ -105,7 +109,7 @@ For help, discussions or any other queries: [Join our Community](https://communi
 ## Version History
 
 - **0.1**
-    - Initial Release
+  - Initial Release
 
 ## License
 
@@ -117,4 +121,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Spheron Browser Upload SDK](https://docs.spheron.network/sdk/browser/)
 - [Spheron Site Docs](https://docs.spheron.network/static/deployment/logs/)
 - [The Graph Docs](https://thegraph.com/docs/en/)
-
