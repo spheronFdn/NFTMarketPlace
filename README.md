@@ -91,7 +91,7 @@ Now, your subgraph is deployed, and you can start your project using `yarn dev` 
 
 🚀 Congratulations! You now have your own end-to-end NFT marketplace, powered entirely by Spheron infrastructure.
 
-### How It Works?
+## How It Works?
 
 - **Browser Storage V2**: Used for storing NFT metadata and images on IPFS. Options for Arweave or Filecoin are available during server deployment.
 - **Spheron Compute**: Runs the server necessary for generating one-time upload tokens for use in the Browser SDK.
